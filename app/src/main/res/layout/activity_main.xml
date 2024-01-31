@@ -128,4 +128,14 @@
         app:layout_constraintStart_toStartOf="@+id/txtSets"
         app:layout_constraintTop_toTopOf="@+id/textView8" />
 
+    <TextView
+        android:id="@+id/textNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Ya tengo ejercicio favorito"
+        app:layout_constraintEnd_toEndOf="@+id/buttonAdd"
+        app:layout_constraintStart_toStartOf="@+id/buttonAdd"
+        app:layout_constraintTop_toBottomOf="@+id/buttonAdd" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

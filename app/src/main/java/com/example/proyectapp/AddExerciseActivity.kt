@@ -5,15 +5,50 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.room.Room
+import com.example.proyectapp.database.AppDatabase
 import com.example.proyectapp.databinding.ActivityAddExerciseBinding
 
 class AddExerciseActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddExerciseBinding
+    private lateinit var db: AppDatabase
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAddExerciseBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.toolbarBack)
+        db = Room
+            .databaseBuilder(
+                this,
+                AppDatabase::class.java,
+                AppDatabase.DATABASE_NAME
+            )
+            .allowMainThreadQueries().build()
+
+        binding.buttonSave.setOnClickListener{
+            val name = binding.editTextName.text.toString()
+            val sets = binding.editTextSets.text.toString().toIntOrNull()
+            val reps = binding.editTextReps.text.toString().toIntOrNull()
+            val muscle = binding.editTextMuscle.text.toString()
+            val notes = binding.editTextNotes.text.toString()
+
+
+            val exercise = Exercise(
+                name = name,
+                sets = sets,
+                reps = reps,
+                muscle = muscle,
+                notes = notes
+            )
+
+            db
+                .exerciseDao()
+                .save(exercise)
+
+
+            finish()
+        }
+
     }
 
 

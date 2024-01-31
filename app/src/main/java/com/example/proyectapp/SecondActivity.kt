@@ -5,16 +5,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.room.Room
+import com.example.proyectapp.database.AppDatabase
 import com.example.proyectapp.databinding.ActivityMainBinding
 import com.example.proyectapp.databinding.ActivitySecondBinding
 
 class SecondActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySecondBinding
-    enum class Params {
-        ExerciseName,
-        ExerciseSets,
-        ExerciseReps
-    }
+    private lateinit var db: AppDatabase
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,13 +23,30 @@ class SecondActivity : AppCompatActivity() {
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
 
-        val exerciseName = intent.getStringExtra(Params.ExerciseName.name)
-        val exerciseSets = intent.getIntExtra(Params.ExerciseSets.name, 0)
-        val exerciseReps = intent.getIntExtra(Params.ExerciseReps.name, 0)
+        db = Room
+            .databaseBuilder(
+                this,
+                AppDatabase::class.java,
+                AppDatabase.DATABASE_NAME
+            )
+            .allowMainThreadQueries().build()
 
-        binding.txtNameExercise.text = "Nombre: $exerciseName"
-        binding.txtSetsExercise.setText("Sets: $exerciseSets")
-        binding.txtRepsExercise.setText("Reps: $exerciseReps")
+
+        binding.booksRecyclerView.layoutManager =
+            GridLayoutManager(this, 1, RecyclerView.VERTICAL, false)
+
+        binding.booksRecyclerView.adapter = ExerciseAdapter(
+            db.exerciseDao().list(), this, db
+        )
+
+        binding.addButton.setOnClickListener{
+            val addExerciseIntent = Intent(
+                this, AddExerciseActivity::class.java
+            )
+
+            startActivity(addExerciseIntent)
+        }
+
 
     }
 

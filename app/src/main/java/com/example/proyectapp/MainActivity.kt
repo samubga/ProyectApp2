@@ -14,28 +14,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.buttonAdd.setOnClickListener {
-            val name = binding.txtName.text.toString()
-            val sets = binding.txtSets.text.toString().toIntOrNull()
-            val reps = binding.txtReps.text.toString().toIntOrNull()
-            if(sets != null && reps != null && name != ""){
-                val exercise = Exercise(name,sets,reps)
-                Toast.makeText(this,name + " añadido como favorito", Toast.LENGTH_SHORT).show()
-
-                val exerciseIntent = Intent(this, SecondActivity::class.java)
-                exerciseIntent.putExtra(SecondActivity.Params.ExerciseName.name,
-                    name)
-                exerciseIntent.putExtra(SecondActivity.Params.ExerciseSets.name,
-                    sets)
-                exerciseIntent.putExtra(SecondActivity.Params.ExerciseReps.name,
-                    reps)
+            val exerciseIntent = Intent(this, SecondActivity::class.java)
+            startActivity(exerciseIntent)
 
 
-                startActivity(exerciseIntent)
-            }
-            else{
-                Toast.makeText(this,"Rellena todos los campos", Toast.LENGTH_SHORT).show()
-            }
+        }
 
+        binding.textNext.setOnClickListener {
+            val exerciseIntent = Intent(this, SecondActivity::class.java)
+            startActivity(exerciseIntent)
         }
     }
 }
