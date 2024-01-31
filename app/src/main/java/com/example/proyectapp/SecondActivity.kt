@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import androidx.room.Room
 import com.example.proyectapp.database.AppDatabase
 import com.example.proyectapp.databinding.ActivityMainBinding
@@ -32,10 +35,10 @@ class SecondActivity : AppCompatActivity() {
             .allowMainThreadQueries().build()
 
 
-        binding.booksRecyclerView.layoutManager =
+        binding.exerciseRecyclerView.layoutManager =
             GridLayoutManager(this, 1, RecyclerView.VERTICAL, false)
 
-        binding.booksRecyclerView.adapter = ExerciseAdapter(
+        binding.exerciseRecyclerView.adapter = ExerciseAdapter(
             db.exerciseDao().list(), this, db
         )
 
@@ -46,6 +49,13 @@ class SecondActivity : AppCompatActivity() {
 
             startActivity(addExerciseIntent)
         }
+        val dividerItemDecoration = DividerItemDecoration(
+            binding.exerciseRecyclerView.context,
+            LinearLayoutManager.VERTICAL
+        )
+
+        // Agregar el DividerItemDecoration al RecyclerView
+        binding.exerciseRecyclerView.addItemDecoration(dividerItemDecoration)
 
 
     }
@@ -53,6 +63,16 @@ class SecondActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
         return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        val adapter = binding.exerciseRecyclerView.adapter as ExerciseAdapter
+
+        adapter.exercises = db.exerciseDao().list()
+
+        adapter.notifyDataSetChanged()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

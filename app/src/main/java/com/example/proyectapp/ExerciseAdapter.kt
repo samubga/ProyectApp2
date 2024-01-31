@@ -5,9 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectapp.database.AppDatabase
 import com.example.proyectapp.databinding.ExerciseLayoutBinding
+
 
 class ExerciseAdapter (
     var exercises: List<Exercise>,
@@ -45,6 +47,20 @@ class ExerciseAdapter (
         binding.textViewMuscle.text = exercise.muscle
 
         binding.texttViewNotes.text = exercise.notes
+        binding.buttonDelete.setOnClickListener{
+            val deletedRows = db.exerciseDao().delete(exercise.id)
+
+            exercises = db.exerciseDao().list()
+
+            notifyDataSetChanged()
+            if(deletedRows == 0) {
+                Toast.makeText(context, "No se ha eliminado ningún ejercicio", Toast.LENGTH_LONG).show()
+            }else {
+                Toast.makeText(context, "Se ha eliminado el ejercicio", Toast.LENGTH_LONG).show()
+            }
+        }
+
+
 
 
     }
