@@ -1,4 +1,4 @@
-package com.example.proyectapp
+package com.example.proyectapp.allExerciseActivities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.core.content.ContextCompat
 import androidx.room.Room
+import com.example.proyectapp.R
 import com.example.proyectapp.database.AppDatabase
 import com.example.proyectapp.databinding.ActivityAddExerciseBinding
 import com.example.proyectapp.model.Exercise

@@ -1,4 +1,4 @@
-package com.example.proyectapp
+package com.example.proyectapp.allExerciseActivities
 
 import android.app.AlertDialog
 import android.content.Context
@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.example.proyectapp.R
 import com.example.proyectapp.database.AppDatabase
 import com.example.proyectapp.databinding.ExerciseLayoutBinding
 import com.example.proyectapp.model.Exercise

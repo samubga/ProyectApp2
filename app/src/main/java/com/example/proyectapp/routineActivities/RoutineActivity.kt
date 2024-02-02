@@ -1,4 +1,4 @@
-package com.example.proyectapp
+package com.example.proyectapp.routineActivities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,6 +6,9 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.core.content.ContextCompat
+import com.example.proyectapp.MainActivity
+import com.example.proyectapp.R
+import com.example.proyectapp.allExerciseActivities.AddExerciseActivity
 import com.example.proyectapp.databinding.ActivityRoutineBinding
 
 class RoutineActivity : AppCompatActivity() {
@@ -15,6 +18,11 @@ class RoutineActivity : AppCompatActivity() {
         binding = ActivityRoutineBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.toolbarRoutine)
+
+        binding.buttonAddRoutine.setOnClickListener{
+            val createRoutineIntent = Intent(this, CreateRoutineActivity::class.java)
+            startActivity(createRoutineIntent)
+        }
 
     }
 

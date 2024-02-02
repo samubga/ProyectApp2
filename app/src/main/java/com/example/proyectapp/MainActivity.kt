@@ -6,7 +6,10 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.core.content.ContextCompat
+import com.example.proyectapp.allExerciseActivities.AddExerciseActivity
+import com.example.proyectapp.allExerciseActivities.SecondActivity
 import com.example.proyectapp.databinding.ActivityMainBinding
+import com.example.proyectapp.routineActivities.RoutineActivity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding

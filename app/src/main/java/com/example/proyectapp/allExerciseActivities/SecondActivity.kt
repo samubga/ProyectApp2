@@ -1,4 +1,4 @@
-package com.example.proyectapp
+package com.example.proyectapp.allExerciseActivities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -10,10 +10,10 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import androidx.room.Room
+import com.example.proyectapp.MainActivity
+import com.example.proyectapp.R
 import com.example.proyectapp.database.AppDatabase
-import com.example.proyectapp.databinding.ActivityMainBinding
 import com.example.proyectapp.databinding.ActivitySecondBinding
 
 class SecondActivity : AppCompatActivity() {

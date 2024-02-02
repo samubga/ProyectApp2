@@ -13,13 +13,16 @@
         android:theme="@style/Base.Theme.ProyectApp"
         tools:targetApi="31">
         <activity
-            android:name=".RoutineActivity"
+            android:name=".routineActivities.CreateRoutineActivity"
             android:exported="false" />
         <activity
-            android:name=".AddExerciseActivity"
+            android:name=".routineActivities.RoutineActivity"
+            android:exported="false" />
+        <activity
+            android:name=".allExerciseActivities.AddExerciseActivity"
             android:exported="true" />
         <activity
-            android:name=".SecondActivity"
+            android:name=".allExerciseActivities.SecondActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
