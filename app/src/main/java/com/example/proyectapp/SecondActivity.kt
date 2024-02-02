@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -62,6 +63,9 @@ class SecondActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
+        binding.toolbar.setTitle("Ejercicios")
+        binding.toolbar.setTitleTextColor(ContextCompat.getColor(this, R.color.white))
+
         return super.onCreateOptionsMenu(menu)
     }
 
@@ -82,9 +86,15 @@ class SecondActivity : AppCompatActivity() {
                 startActivity(addExerciseActivityIntent)
                 true
             }
+            R.id.menuHome ->{
+                val mainActivityIntent = Intent(this, MainActivity::class.java)
+                startActivity(mainActivityIntent)
+                true
+            }
             else -> {
                 return super.onOptionsItemSelected(item)
             }
+
         }
 
     }

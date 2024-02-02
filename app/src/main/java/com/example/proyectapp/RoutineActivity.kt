@@ -6,36 +6,24 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.core.content.ContextCompat
-import com.example.proyectapp.databinding.ActivityMainBinding
+import com.example.proyectapp.databinding.ActivityRoutineBinding
 
-class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
+class RoutineActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityRoutineBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-
+        binding = ActivityRoutineBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setSupportActionBar(binding.toolbar2)
+        setSupportActionBar(binding.toolbarRoutine)
 
-        binding.buttonAdd.setOnClickListener {
-            val routineIntent = Intent(this, RoutineActivity::class.java)
-            startActivity(routineIntent)
-
-
-        }
-
-        binding.textNext.setOnClickListener {
-            val exerciseIntent = Intent(this, SecondActivity::class.java)
-            startActivity(exerciseIntent)
-        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
-        binding.toolbar2.setTitle("Inicio")
-        binding.toolbar2.setTitleTextColor(ContextCompat.getColor(this, R.color.white))
-        return super.onCreateOptionsMenu(menu)
+        binding.toolbarRoutine.setTitle("Rutinas")
+        binding.toolbarRoutine.setTitleTextColor(ContextCompat.getColor(this, R.color.white))
 
+        return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

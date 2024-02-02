@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.core.content.ContextCompat
 import androidx.room.Room
 import com.example.proyectapp.database.AppDatabase
 import com.example.proyectapp.databinding.ActivityAddExerciseBinding
+import com.example.proyectapp.model.Exercise
 
 class AddExerciseActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddExerciseBinding
@@ -54,6 +56,9 @@ class AddExerciseActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.back_menu, menu)
+        binding.toolbarBack.setTitle("Añadir ejercicio")
+        binding.toolbarBack.setTitleTextColor(ContextCompat.getColor(this, R.color.white))
+
         return super.onCreateOptionsMenu(menu)
     }
 
