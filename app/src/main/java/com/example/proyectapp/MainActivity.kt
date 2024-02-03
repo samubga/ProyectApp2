@@ -63,6 +63,11 @@ class MainActivity : AppCompatActivity() {
                 startActivity(mainActivityIntent)
                 true
             }
+            R.id.menuRoutines->{
+                val routineActivityIntent = Intent(this, RoutineActivity::class.java)
+                startActivity(routineActivityIntent)
+                true
+            }
             else -> {
                 return super.onOptionsItemSelected(item)
             }

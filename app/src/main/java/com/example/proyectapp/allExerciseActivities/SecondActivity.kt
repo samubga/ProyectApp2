@@ -16,6 +16,7 @@ import com.example.proyectapp.R
 import com.example.proyectapp.database.AppDatabase
 import com.example.proyectapp.databinding.ActivitySecondBinding
 import com.example.proyectapp.model.Exercise
+import com.example.proyectapp.routineActivities.RoutineActivity
 
 class SecondActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySecondBinding
@@ -94,6 +95,11 @@ class SecondActivity : AppCompatActivity() {
             R.id.menuHome ->{
                 val mainActivityIntent = Intent(this, MainActivity::class.java)
                 startActivity(mainActivityIntent)
+                true
+            }
+            R.id.menuRoutines->{
+                val routineActivityIntent = Intent(this, RoutineActivity::class.java)
+                startActivity(routineActivityIntent)
                 true
             }
             else -> {

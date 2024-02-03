@@ -11,6 +11,9 @@ interface RoutineDao {
     fun save(routine: Routine): Long
 
     @Query("SELECT * FROM routine")
-    fun getAllRoutines(): List<Routine>
+    fun list(): List<Routine>
+
+    @Query("DELETE FROM routine WHERE id=:id")
+    fun delete(id: Int): Int
 
 }
