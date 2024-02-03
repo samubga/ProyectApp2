@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -35,7 +37,7 @@
         android:text="Nombre Ejercicio"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/buttonEdit"
+        app:layout_constraintEnd_toStartOf="@+id/buttonAddToRoutine"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -68,26 +70,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewName" />
 
-    <ImageButton
-        android:id="@+id/buttonEdit"
-        android:layout_width="34dp"
-        android:layout_height="32dp"
-        android:layout_marginEnd="10dp"
-        android:backgroundTint="#FDF6FE"
-        app:layout_constraintEnd_toStartOf="@+id/buttonDelete"
-        app:layout_constraintTop_toTopOf="@+id/textViewName"
-        app:srcCompat="@android:drawable/ic_input_add" />
-
-    <ImageButton
-        android:id="@+id/buttonDelete"
-        android:layout_width="36dp"
-        android:layout_height="31dp"
-        android:layout_marginEnd="10dp"
-        android:backgroundTint="#FDF6FE"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/buttonEdit"
-        app:srcCompat="@android:drawable/ic_delete" />
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
@@ -107,4 +89,23 @@
         app:layout_constraintStart_toEndOf="@+id/textView3"
         app:layout_constraintTop_toTopOf="@+id/textView3"
         app:layout_constraintVertical_bias="1.0" />
+
+    <ImageButton
+        android:id="@+id/buttonAddToRoutine"
+        android:layout_width="38dp"
+        android:layout_height="36dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="#FDF6FE"
+        app:layout_constraintEnd_toStartOf="@+id/buttonRemoveFromRoutine"
+        app:layout_constraintTop_toTopOf="@+id/textViewName"
+        app:srcCompat="@android:drawable/ic_input_add" />
+
+    <ImageButton
+        android:id="@+id/buttonRemoveFromRoutine"
+        android:layout_width="38dp"
+        android:layout_height="35dp"
+        android:backgroundTint="#FDF6FE"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/buttonAddToRoutine"
+        app:srcCompat="@android:drawable/ic_delete" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,17 +1,23 @@
 package com.example.proyectapp.routineActivities
 
+import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.EditText
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
-import com.example.proyectapp.allExerciseActivities.AddExerciseActivity
-import com.example.proyectapp.allExerciseActivities.ExerciseAdapter
+import com.example.proyectapp.R
 import com.example.proyectapp.database.AppDatabase
 import com.example.proyectapp.databinding.ActivityCreateRoutineBinding
+import com.example.proyectapp.model.Routine
+import com.example.proyectapp.model.RoutineExerciseCrossRef
 
 class CreateRoutineActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCreateRoutineBinding
@@ -22,11 +28,40 @@ class CreateRoutineActivity : AppCompatActivity() {
         setContentView(binding.root)
         setSupportActionBar(binding.toolbarBackRoutine)
 
-        binding.buttonAddNewExercise.setOnClickListener{
-            val addExerciseIntent = Intent(this, AddExerciseActivity::class.java)
-            startActivity(addExerciseIntent)
+        binding.buttonSaveRoutine.setOnClickListener{
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("Nombre de la rutina")
 
+            val input = EditText(this)
+            builder.setView(input)
+
+            builder.setPositiveButton("Guardar") { _, _ ->
+                val routineName = input.text.toString()
+
+                // 1. Crear una nueva instancia de la entidad Routine con el nombre obtenido
+                val newRoutine = Routine(routineName = routineName)
+
+                // 2. Guardar la nueva rutina en la base de datos
+                val routineId = db.routineDao().save(newRoutine)
+
+                // 3. Recuperar la lista de ejercicios seleccionados (exercisesForRoutine)
+                val adapter = binding.exerciseRecyclerView.adapter as ExerciseRoutineAdapter
+                val selectedExercises = adapter.exercisesForRoutine
+
+                // 4. Para cada ejercicio en la lista, crear e insertar una instancia de RoutineExerciseCrossRef
+                val routineExerciseCrossRefs = selectedExercises.map {
+                    RoutineExerciseCrossRef(routineId, it.id)
+                }
+                db.routineExerciseCrossRefDao().saveAll(routineExerciseCrossRefs)
+            }
+
+            builder.setNegativeButton("Cancelar") { dialog, _ ->
+                dialog.cancel()
+            }
+
+            builder.show()
         }
+
         db = Room
             .databaseBuilder(
                 this,
@@ -40,7 +75,7 @@ class CreateRoutineActivity : AppCompatActivity() {
             GridLayoutManager(this, 1, RecyclerView.VERTICAL, false)
 
         binding.exerciseRecyclerView.adapter = ExerciseRoutineAdapter(
-            db.exerciseDao().list(), this, db
+            db.exerciseDao().list(), db.exerciseDao().list(),this
         )
 
 
@@ -62,4 +97,25 @@ class CreateRoutineActivity : AppCompatActivity() {
         adapter.notifyDataSetChanged()
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.back_menu, menu)
+        binding.toolbarBackRoutine.setTitle("Seleccionar Ejercicios")
+        binding.toolbarBackRoutine.setTitleTextColor(ContextCompat.getColor(this, R.color.white))
+
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId) {
+            R.id.actionBarBack -> {
+                val routineActivityIntent = Intent(this, RoutineActivity::class.java)
+                startActivity(routineActivityIntent)
+                true
+            }
+            else -> {
+                return super.onOptionsItemSelected(item)
+            }
+        }
+
+    }
 }

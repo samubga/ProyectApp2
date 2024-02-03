@@ -15,6 +15,7 @@ import com.example.proyectapp.MainActivity
 import com.example.proyectapp.R
 import com.example.proyectapp.database.AppDatabase
 import com.example.proyectapp.databinding.ActivitySecondBinding
+import com.example.proyectapp.model.Exercise
 
 class SecondActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySecondBinding
@@ -34,6 +35,10 @@ class SecondActivity : AppCompatActivity() {
                 AppDatabase.DATABASE_NAME
             )
             .allowMainThreadQueries().build()
+
+        //Método para meter datos
+
+        //createInitialData()
 
 
         binding.exerciseRecyclerView.layoutManager =
@@ -97,5 +102,29 @@ class SecondActivity : AppCompatActivity() {
 
         }
 
+    }
+
+    fun createInitialData() {
+        db.exerciseDao().save(
+            Exercise("Curl martillo",4 ,10, "Biceps", " Un ejercicio efectivo para aislar y trabajar los músculos del bíceps. El agarre neutral en forma de martillo proporciona un estímulo adicional.")
+        )
+        db.exerciseDao().save(
+            Exercise("Press inclinado",3 ,8, "Pecho", "Ideal para desarrollar la porción superior del músculo pectoral (pecho). Asegúrate de ajustar el banco a un ángulo inclinado para enfocarte en esta área específica.")
+        )
+        db.exerciseDao().save(
+            Exercise("Sentadilla haka",3 ,8, "Cuadriceps y femoral", "Una variante de la sentadilla que involucra los músculos de las piernas y glúteos. Mantén una postura amplia y los pies girados hacia afuera.")
+        )
+        db.exerciseDao().save(
+            Exercise("Laterales",4 ,12, "Hombro", "Ejercicio de aislamiento para trabajar los músculos laterales del hombro (deltoides lateral). Ayuda a desarrollar el ancho de los hombros.")
+        )
+        db.exerciseDao().save(
+            Exercise("Extensión de triceps",3 ,12, "Triceps", "Trabajo específico en los músculos del tríceps. Puedes realizarlo con barra o mancuernas.")
+        )
+        db.exerciseDao().save(
+            Exercise("Dominadas",3 ,10, "Espalda", "Un ejercicio efectivo para trabajar la espalda, especialmente los músculos dorsales y los brazos. Puedes variar el agarre para enfocarte en diferentes áreas.")
+        )
+        db.exerciseDao().save(
+            Exercise("Remo en máquina",2 ,10, "Espalda", "Ejercicio de remo que trabaja los músculos de la espalda. Utiliza una máquina de remo para una ejecución controlada.")
+        )
     }
 }
