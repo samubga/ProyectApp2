@@ -16,4 +16,6 @@ interface RoutineDao {
     @Query("DELETE FROM routine WHERE id=:id")
     fun delete(id: Int): Int
 
+    @Query("SELECT routine_name FROM routine WHERE id=:id")
+    fun getRoutineNameById(id: Int): String?
 }

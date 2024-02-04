@@ -45,12 +45,12 @@
     <TextView
         android:id="@+id/textView5"
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:layout_marginTop="140dp"
         android:layout_marginEnd="60dp"
         android:gravity="center"
-        android:text="¿Cuál es tu ejercicio favorito que tiene que estar siempre en tu rutina?"
+        android:text="Cuando hagas tu rutina, recuerda adaptarla a tus objetivos y dias a la semana que puedas ir"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,6 +63,7 @@
         android:layout_marginTop="10dp"
         android:text="Ver mis rutinas"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
@@ -72,6 +73,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="Ver todos los ejercicios"
+        android:textColor="#521F71"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/buttonAdd"
         app:layout_constraintStart_toStartOf="@+id/buttonAdd"
         app:layout_constraintTop_toBottomOf="@+id/buttonAdd" />
@@ -86,5 +89,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Un ejemplo sería divididarla por grupos musculares cercanos, la rutina PPL. La divides en 3 días, dia de Push(Pecho,hombro,triceps), dia de Pull(Espalda, biceps), Día de Pierna"
+        app:layout_constraintEnd_toEndOf="@+id/textView5"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/textNext" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

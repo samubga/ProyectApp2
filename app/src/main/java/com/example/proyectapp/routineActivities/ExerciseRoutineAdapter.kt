@@ -1,6 +1,7 @@
 package com.example.proyectapp.routineActivities
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +15,6 @@ import com.example.proyectapp.model.Exercise
 class ExerciseRoutineAdapter (
 
     var exercises: List<Exercise>,
-    var exercisesForRoutine: List<Exercise>,
     val context: Context
 
 ) :
@@ -22,6 +22,7 @@ class ExerciseRoutineAdapter (
     RecyclerView.Adapter<ExerciseRoutineAdapter.ItemViewHolder>() {
 
     private val layoutInflater = LayoutInflater.from(context)
+    var exercisesForRoutine: List<Exercise> = emptyList()
 
     class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
@@ -51,19 +52,23 @@ class ExerciseRoutineAdapter (
         binding.texttViewNotes.text = exercise.notes
 
         binding.buttonAddToRoutine.setOnClickListener {
+
             binding.background.setBackgroundColor(ContextCompat.getColor(context, R.color.green))
 
-            val selectedExercise = exercises[position]
 
-            if (!exercisesForRoutine.contains(selectedExercise)) {
+
+            if (!exercisesForRoutine.contains(exercise)) {
                 exercisesForRoutine = exercisesForRoutine.toMutableList().apply {
-                    add(selectedExercise)
+                    add(exercise)
+                    Log.d("ExerciseRoutineAdapter", "Exercise added to routine: ${exercise.name}")
                 }
                 notifyDataSetChanged()
             }
+            Log.d("ExerciseRoutineAdapter", "Lista: $exercisesForRoutine")
         }
 
         binding.buttonRemoveFromRoutine.setOnClickListener {
+            Log.d("ExerciseRoutineAdapter", "Exercise removed from routine: ${exercise.name}")
             binding.background.setBackgroundColor(ContextCompat.getColor(context, R.color.backgroundDefault))
 
             val selectedExercise = exercises[position]

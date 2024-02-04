@@ -38,4 +38,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/buttonDeleteRoutine"
         app:srcCompat="@drawable/edit_24px" />
+
+    <ImageView
+        android:id="@+id/buttonViewExercises"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="@+id/textViewName"
+        app:layout_constraintTop_toBottomOf="@+id/textViewName"
+        app:srcCompat="@android:drawable/ic_menu_view" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

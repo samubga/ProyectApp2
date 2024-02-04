@@ -48,6 +48,8 @@ class RoutineActivity : AppCompatActivity() {
         )
 
 
+
+
         val dividerItemDecoration = DividerItemDecoration(
             binding.recyclerViewRoutines.context,
             LinearLayoutManager.VERTICAL

@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
@@ -46,6 +47,7 @@ class CreateRoutineActivity : AppCompatActivity() {
 
                 // 2. Guardar la nueva rutina en la base de datos
                 val routineId = db.routineDao().save(newRoutine)
+                Log.d("TAG", "RutinaID: $routineId");
 
                 // 3. Recuperar la lista de ejercicios seleccionados (exercisesForRoutine)
                 val adapter = binding.exerciseRecyclerView.adapter as ExerciseRoutineAdapter
@@ -80,7 +82,7 @@ class CreateRoutineActivity : AppCompatActivity() {
             GridLayoutManager(this, 1, RecyclerView.VERTICAL, false)
 
         binding.exerciseRecyclerView.adapter = ExerciseRoutineAdapter(
-            db.exerciseDao().list(), db.exerciseDao().list(),this
+            db.exerciseDao().list(),this
         )
 
 
