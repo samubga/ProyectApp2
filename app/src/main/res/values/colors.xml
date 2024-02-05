@@ -7,5 +7,7 @@
         #91c498
     </color>
     <color name="backgroundDefault"> #FDF6FE </color>
+    <color name="morado1"> #5E35B1 </color>
+    <color name="morado2"> #673AB7 </color>
 
 </resources>

@@ -11,45 +11,50 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
         android:text="@string/nombre_rutina"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/buttonDeleteRoutine"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/buttonDeleteRoutine"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         android:layout_marginEnd="10dp"
+        android:contentDescription="@string/buttonDeleteRoutine"
         app:layout_constraintBottom_toBottomOf="@+id/textViewName"
         app:layout_constraintEnd_toStartOf="@+id/buttonEditRoutine"
         app:layout_constraintTop_toTopOf="@+id/textViewName"
-        app:srcCompat="@drawable/delete_24px"
-        android:contentDescription="@string/buttonDeleteRoutine" />
+        app:srcCompat="@drawable/delete_24px" />
 
     <ImageView
         android:id="@+id/buttonEditRoutine"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         android:layout_marginEnd="10dp"
+        android:contentDescription="@string/buttonEditRoutine"
         app:layout_constraintBottom_toBottomOf="@+id/buttonDeleteRoutine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/buttonDeleteRoutine"
-        app:srcCompat="@drawable/edit_24px"
-        android:contentDescription="@string/buttonEditRoutine" />
+        app:srcCompat="@drawable/edit_24px" />
 
     <ImageView
         android:id="@+id/buttonViewExercises"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         android:layout_marginTop="10dp"
         android:contentDescription="@string/buttonViewExercises"
         app:layout_constraintStart_toStartOf="@+id/textViewName"
         app:layout_constraintTop_toBottomOf="@+id/textViewName"
-        app:srcCompat="@android:drawable/ic_menu_view"
+        app:srcCompat="@drawable/eye_icon"
         tools:ignore="ImageContrastCheck" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonViewExercises" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

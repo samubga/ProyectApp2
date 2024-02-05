@@ -6,7 +6,7 @@
         android:id="@+id/actionBarBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:icon="?attr/homeAsUpIndicator"
-        android:title="Item"
+        android:icon="@drawable/back_icon"
+        android:title="@string/item"
         app:showAsAction="always" />
 </menu>
