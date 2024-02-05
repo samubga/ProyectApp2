@@ -112,4 +112,11 @@
         app:layout_constraintTop_toTopOf="@+id/buttonAddToRoutine"
         app:srcCompat="@android:drawable/ic_delete"
         tools:ignore="TouchTargetSizeCheck" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/texttViewNotes" />
 </androidx.constraintlayout.widget.ConstraintLayout>
