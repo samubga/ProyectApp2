@@ -25,11 +25,14 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:ems="10"
-        android:hint="Nombre del ejercicio"
+        android:hint="@string/nombre_del_ejercicio"
         android:inputType="text"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarBack" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbarBack"
+        tools:ignore="TextContrastCheck"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/editTextReps"
@@ -37,22 +40,28 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:ems="10"
-        android:hint="Nº de repeticiones"
+        android:hint="@string/n_de_repeticiones"
         android:inputType="number"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="@+id/editTextSets"
         app:layout_constraintStart_toStartOf="@+id/editTextSets"
-        app:layout_constraintTop_toBottomOf="@+id/editTextSets" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextSets"
+        tools:ignore="TextContrastCheck"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/editTextSets"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:autofillHints=""
         android:ems="10"
-        android:hint="Nº de series"
+        android:hint="@string/n_de_series"
         android:inputType="number"
+        android:minHeight="48dp"
         app:layout_constraintStart_toStartOf="@+id/editTextName"
-        app:layout_constraintTop_toBottomOf="@+id/editTextName" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextName"
+        tools:ignore="TextContrastCheck" />
 
     <EditText
         android:id="@+id/editTextNotes"
@@ -63,12 +72,14 @@
         android:layout_marginBottom="10dp"
         android:ems="10"
         android:gravity="start|top"
-        android:hint="Descripción y notas"
+        android:hint="@string/descripci_n_y_notas"
         android:inputType="textMultiLine"
         app:layout_constraintBottom_toTopOf="@+id/buttonSave"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/editTextReps"
-        app:layout_constraintTop_toBottomOf="@+id/editTextMuscle" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextMuscle"
+        tools:ignore="TextContrastCheck"
+        android:autofillHints="" />
 
     <Button
         android:id="@+id/buttonSave"
@@ -76,7 +87,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
-        android:text="Guardar"
+        android:text="@string/guardar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -85,9 +96,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:autofillHints=""
         android:ems="10"
-        android:hint="Músculo trabajado"
+        android:hint="@string/m_sculo_trabajado"
         android:inputType="text"
+        android:minHeight="48dp"
         app:layout_constraintStart_toStartOf="@+id/editTextReps"
-        app:layout_constraintTop_toBottomOf="@+id/editTextReps" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextReps"
+        tools:ignore="TextContrastCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>

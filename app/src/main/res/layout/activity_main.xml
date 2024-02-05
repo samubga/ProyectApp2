@@ -15,7 +15,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:srcCompat="@drawable/_c1ns00wescuwaoe0uoeoe" />
+        app:srcCompat="@drawable/_c1ns00wescuwaoe0uoeoe"
+        android:contentDescription="@string/todo" />
 
     <TextView
         android:id="@+id/textView4"
@@ -25,18 +26,19 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="40dp"
         android:gravity="center"
-        android:text="Bienvenido a GymGrid, la aplicación perfecta para crear rutinas y ejercicios adaptados a tus posibilidades y necesidades"
+        android:text="@string/bienvenido_a_gymgrid_la_aplicaci_n_perfecta_para_crear_rutinas_y_ejercicios_adaptados_a_tus_posibilidades_y_necesidades"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/titleTextView"
+        tools:ignore="TextSizeCheck" />
 
     <TextView
         android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="GymGrid"
+        android:text="@string/gymgrid"
         android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,7 +52,7 @@
         android:layout_marginTop="140dp"
         android:layout_marginEnd="60dp"
         android:gravity="center"
-        android:text="Cuando hagas tu rutina, recuerda adaptarla a tus objetivos y dias a la semana que puedas ir"
+        android:text="@string/cuando_hagas_tu_rutina_recuerda_adaptarla_a_tus_objetivos_y_dias_a_la_semana_que_puedas_ir"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +63,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Ver mis rutinas"
+        android:text="@string/ver_mis_rutinas"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
@@ -72,7 +74,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Ver todos los ejercicios"
+        android:text="@string/ver_todos_los_ejercicios"
         android:textColor="#521F71"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/buttonAdd"
@@ -95,7 +97,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Un ejemplo sería divididarla por grupos musculares cercanos, la rutina PPL. La divides en 3 días, dia de Push(Pecho,hombro,triceps), dia de Pull(Espalda, biceps), Día de Pierna"
+        android:text="@string/un_ejemplo_ser_a_divididarla_por_grupos_musculares_cercanos_la_rutina_ppl_la_divides_en_3_d_as_dia_de_push_pecho_hombro_triceps_dia_de_pull_espalda_biceps_d_a_de_pierna"
         app:layout_constraintEnd_toEndOf="@+id/textView5"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView5"

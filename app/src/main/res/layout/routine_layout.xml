@@ -12,7 +12,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
-        android:text="Nombre rutina"
+        android:text="@string/nombre_rutina"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/buttonDeleteRoutine"
@@ -27,7 +27,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/textViewName"
         app:layout_constraintEnd_toStartOf="@+id/buttonEditRoutine"
         app:layout_constraintTop_toTopOf="@+id/textViewName"
-        app:srcCompat="@drawable/delete_24px" />
+        app:srcCompat="@drawable/delete_24px"
+        android:contentDescription="@string/buttonDeleteRoutine" />
 
     <ImageView
         android:id="@+id/buttonEditRoutine"
@@ -37,15 +38,18 @@
         app:layout_constraintBottom_toBottomOf="@+id/buttonDeleteRoutine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/buttonDeleteRoutine"
-        app:srcCompat="@drawable/edit_24px" />
+        app:srcCompat="@drawable/edit_24px"
+        android:contentDescription="@string/buttonEditRoutine" />
 
     <ImageView
         android:id="@+id/buttonViewExercises"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:contentDescription="@string/buttonViewExercises"
         app:layout_constraintStart_toStartOf="@+id/textViewName"
         app:layout_constraintTop_toBottomOf="@+id/textViewName"
-        app:srcCompat="@android:drawable/ic_menu_view" />
+        app:srcCompat="@android:drawable/ic_menu_view"
+        tools:ignore="ImageContrastCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
