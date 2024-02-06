@@ -3,8 +3,10 @@ package com.example.proyectapp.allExerciseActivities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
@@ -17,10 +19,13 @@ import com.example.proyectapp.database.AppDatabase
 import com.example.proyectapp.databinding.ActivitySecondBinding
 import com.example.proyectapp.model.Exercise
 import com.example.proyectapp.routineActivities.RoutineActivity
+import java.util.Locale
 
 class SecondActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySecondBinding
     private lateinit var db: AppDatabase
+    private lateinit var exerciseAdapter: ExerciseAdapter
+    private var exerciseList: List<Exercise> = listOf()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,12 +47,9 @@ class SecondActivity : AppCompatActivity() {
         //createInitialData()
 
 
-        binding.exerciseRecyclerView.layoutManager =
-            GridLayoutManager(this, 1, RecyclerView.VERTICAL, false)
 
-        binding.exerciseRecyclerView.adapter = ExerciseAdapter(
-            db.exerciseDao().list(), this, db
-        )
+        exerciseList = db.exerciseDao().list()
+        setupRecyclerView(exerciseList)
 
         binding.addButton.setOnClickListener{
             val addExerciseIntent = Intent(
@@ -56,6 +58,30 @@ class SecondActivity : AppCompatActivity() {
 
             startActivity(addExerciseIntent)
         }
+
+
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                Log.d("ExerciseFilter", "Exercise")
+                filterExercises(newText)
+                return true
+            }
+        })
+
+    }
+
+
+    private fun setupRecyclerView(exercises: List<Exercise>) {
+        binding.exerciseRecyclerView.layoutManager =
+            GridLayoutManager(this, 1, RecyclerView.VERTICAL, false)
+
+        exerciseAdapter = ExerciseAdapter(exercises, this, db)
+        binding.exerciseRecyclerView.adapter = exerciseAdapter
+
         val dividerItemDecoration = DividerItemDecoration(
             binding.exerciseRecyclerView.context,
             LinearLayoutManager.VERTICAL
@@ -63,9 +89,23 @@ class SecondActivity : AppCompatActivity() {
 
         // Agregar el DividerItemDecoration al RecyclerView
         binding.exerciseRecyclerView.addItemDecoration(dividerItemDecoration)
-
-
     }
+
+    private fun filterExercises(query: String?) {
+        val lowerCaseQuery = query?.lowercase(Locale.getDefault()) ?: ""
+        Log.d("ExerciseFilter", "exerciseList size: ${exerciseList.size}")
+        val filteredList = exerciseList.filter { exercise ->
+            Log.d("ExerciseFilter", "Exercise3")
+            val exerciseName = exercise.name.lowercase(Locale.getDefault())
+            val exerciseMuscle = exercise.muscle.lowercase(Locale.getDefault())
+            val containsQuery = exerciseName.contains(lowerCaseQuery) || exerciseMuscle.contains(lowerCaseQuery)
+            Log.d("ExerciseFilter", "Exercise: $exerciseName, Muscle: $exerciseMuscle, ContainsQuery: $containsQuery")
+            containsQuery
+        }
+        exerciseAdapter.updateList(filteredList)
+    }
+
+
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
@@ -134,60 +174,60 @@ class SecondActivity : AppCompatActivity() {
         )
 
 
-        /*db.exerciseDao().save(
-            Exercise("Extensión de Pantorrilla", null, null, "Pantorrilla", "Trabaja los músculos de la pantorrilla. Realiza el ejercicio de pie, elevando los talones para contraer los músculos de la pantorrilla.")
+        db.exerciseDao().save(
+            Exercise("Extensión de Pantorrilla", 4, 10, "Gemelo", "Trabaja los músculos de la pantorrilla. Realiza el ejercicio de pie, elevando los talones para contraer los músculos de la pantorrilla.")
         )
 
         db.exerciseDao().save(
-            Exercise("Hip Thrust", null, null, "Glúteos", "Enfocado en los glúteos y los músculos de la parte posterior de los muslos. Realiza el ejercicio apoyando la espalda en un banco y elevando las caderas hacia arriba.")
+            Exercise("Hip Thrust", 2, 10, "Glúteos", "Enfocado en los glúteos y los músculos de la parte posterior de los muslos. Realiza el ejercicio apoyando la espalda en un banco y elevando las caderas hacia arriba.")
         )
 
         db.exerciseDao().save(
-            Exercise("Extensión de Cuádriceps", null, null, "Cuádriceps", "Aísla y trabaja los músculos del cuádriceps en la parte frontal del muslo. Realiza el ejercicio extendiendo las piernas contra resistencia.")
+            Exercise("Extensión de Cuádriceps", 3, 10, "Cuádriceps", "Aísla y trabaja los músculos del cuádriceps en la parte frontal del muslo. Realiza el ejercicio extendiendo las piernas contra resistencia.")
         )
 
         db.exerciseDao().save(
-            Exercise("Extensión de Femoral", null, null, "Femoral", "Trabaja los músculos de la parte posterior del muslo. Realiza el ejercicio flexionando las piernas hacia atrás contra resistencia.")
+            Exercise("Extensión de Femoral", 3, 12, "Femoral", "Trabaja los músculos de la parte posterior del muslo. Realiza el ejercicio flexionando las piernas hacia atrás contra resistencia.")
         )
 
         db.exerciseDao().save(
-            Exercise("Aductor en Máquina", null, null, "Piernas", "Aísla y trabaja los músculos aductores internos de las piernas. Realiza el ejercicio cerrando las piernas contra resistencia.")
+            Exercise("Aductor en Máquina", 3, 12, "Aductor", "Aísla y trabaja los músculos aductores internos de las piernas. Realiza el ejercicio cerrando las piernas contra resistencia.")
         )
 
         db.exerciseDao().save(
-            Exercise("Tríceps Polea Abajo", null, null, "Tríceps", "Ejercicio para los músculos tríceps. Utiliza una polea alta y tira hacia abajo con la cuerda para trabajar los tríceps.")
+            Exercise("Tríceps Polea Abajo", 3, 12, "Tríceps", "Ejercicio para los músculos tríceps. Utiliza una polea alta y tira hacia abajo con la cuerda para trabajar los tríceps.")
         )
 
         db.exerciseDao().save(
-            Exercise("Curl Predicador", null, null, "Bíceps", "Aísla los músculos del bíceps. Realiza el ejercicio apoyando los brazos sobre el banco del predicador y levantando la barra o mancuernas.")
+            Exercise("Curl Predicador", 3, 10, "Bíceps", "Aísla los músculos del bíceps. Realiza el ejercicio apoyando los brazos sobre el banco del predicador y levantando la barra o mancuernas.")
         )
 
         db.exerciseDao().save(
-            Exercise("Press Militar", null, null, "Hombro", "Trabaja los músculos deltoides. Realiza el ejercicio levantando una barra o mancuernas desde los hombros hacia arriba.")
+            Exercise("Press Militar", 3, 8, "Hombro", "Trabaja los músculos deltoides. Realiza el ejercicio levantando una barra o mancuernas desde los hombros hacia arriba.")
         )
 
         db.exerciseDao().save(
-            Exercise("Pull Over", null, null, "Espalda y Pecho", "Trabaja músculos de la espalda y del pecho. Realiza el ejercicio con una barra o mancuerna, extendiendo los brazos hacia atrás sobre una banca.")
+            Exercise("Pull Over", 4, 12, "Dorsales", "Trabaja músculos de la espalda y del pecho. Realiza el ejercicio con una barra o mancuerna, extendiendo los brazos hacia atrás sobre una banca.")
         )
 
         db.exerciseDao().save(
-            Exercise("Face Pull", null, null, "Hombro y Trapecio", "Ejercicio para los músculos del hombro y trapecio. Utiliza una cuerda en una polea y jala hacia la cara para trabajar los músculos del hombro.")
+            Exercise("Face Pull", 3, 12, "Hombro posterior y Trapecio", "Ejercicio para los músculos del hombro y trapecio. Utiliza una cuerda en una polea y jala hacia la cara para trabajar los músculos del hombro.")
         )
 
         db.exerciseDao().save(
-            Exercise("Press Plano", null, null, "Pecho", "Ejercicio básico para el desarrollo del pectoral. Realiza el ejercicio acostado sobre un banco plano, bajando y elevando la barra o mancuernas.")
+            Exercise("Press Plano", 2, 8, "Pecho", "Ejercicio básico para el desarrollo del pectoral. Realiza el ejercicio acostado sobre un banco plano, bajando y elevando la barra o mancuernas.")
         )
 
         db.exerciseDao().save(
-            Exercise("Peck Deck", null, null, "Pecho", "Máquina diseñada para aislar los músculos pectorales. Realiza el ejercicio sentado y empuja los brazos hacia adentro contra la resistencia.")
+            Exercise("Peck Deck", 3, 12, "Pecho", "Máquina diseñada para aislar los músculos pectorales. Realiza el ejercicio sentado y empuja los brazos hacia adentro contra la resistencia.")
         )
 
         db.exerciseDao().save(
-            Exercise("Jalón al Pecho", null, null, "Espalda", "Trabaja los músculos de la espalda, especialmente los dorsales. Realiza el ejercicio tirando de la barra hacia el pecho.")
+            Exercise("Jalón al Pecho", 4, 8, "Espalda", "Trabaja los músculos de la espalda, especialmente los dorsales. Realiza el ejercicio tirando de la barra hacia el pecho.")
         )
 
         db.exerciseDao().save(
-            Exercise("Remo Gironda Cerrado", null, null, "Espalda", "Variante de remo para trabajar la espalda. Realiza el ejercicio con un agarre cerrado, tirando de la barra hacia la cintura.")
-        )*/
+            Exercise("Remo Gironda Cerrado", 3, 10, "Espalda", "Variante de remo para trabajar la espalda. Realiza el ejercicio con un agarre cerrado, tirando de la barra hacia la cintura.")
+        )
     }
 }

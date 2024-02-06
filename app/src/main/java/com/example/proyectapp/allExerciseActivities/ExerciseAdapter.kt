@@ -74,6 +74,11 @@ class ExerciseAdapter (
         }
     }
 
+    fun updateList(newList: List<Exercise>) {
+        exercises = newList
+        notifyDataSetChanged()
+    }
+
     private fun mostrarDialogoConfirmacion(callback: (Boolean) -> Unit) {
         val builder = AlertDialog.Builder(context)
 

@@ -95,22 +95,22 @@
         android:layout_width="38dp"
         android:layout_height="36dp"
         android:layout_marginEnd="8dp"
-        android:backgroundTint="#FDF6FE"
+        android:background="@android:color/transparent"
         android:contentDescription="@string/buttonAddToRoutine"
         app:layout_constraintEnd_toStartOf="@+id/buttonRemoveFromRoutine"
         app:layout_constraintTop_toTopOf="@+id/textViewName"
-        app:srcCompat="@android:drawable/ic_input_add"
+        app:srcCompat="@drawable/baseline_add_circle_24"
         tools:ignore="ImageContrastCheck,TouchTargetSizeCheck" />
 
     <ImageButton
         android:id="@+id/buttonRemoveFromRoutine"
         android:layout_width="38dp"
         android:layout_height="35dp"
-        android:backgroundTint="#FDF6FE"
+        android:background="@android:color/transparent"
         android:contentDescription="@string/buttonRemoveFromRoutine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/buttonAddToRoutine"
-        app:srcCompat="@android:drawable/ic_delete"
+        app:srcCompat="@drawable/baseline_cancel_24"
         tools:ignore="TouchTargetSizeCheck" />
 
     <View
