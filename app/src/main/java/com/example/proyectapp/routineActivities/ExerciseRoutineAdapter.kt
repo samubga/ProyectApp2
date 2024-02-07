@@ -8,11 +8,10 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectapp.R
-import com.example.proyectapp.database.AppDatabase
 import com.example.proyectapp.databinding.ExerciseRoutineLayoutBinding
 import com.example.proyectapp.model.Exercise
 
-class ExerciseRoutineAdapter (
+class ExerciseRoutineAdapter(
 
     var exercises: List<Exercise>,
     val context: Context
@@ -51,33 +50,43 @@ class ExerciseRoutineAdapter (
 
         binding.texttViewNotes.text = exercise.notes
 
+        if(exercisesForRoutine.contains(exercise)) {
+            holder.itemView.setBackgroundColor(ContextCompat.getColor(context, R.color.green))
+
+        } else {
+            holder.itemView.setBackgroundColor(
+                ContextCompat.getColor(
+                    context,
+                    R.color.backgroundDefault
+                )
+            )
+        }
+
         binding.buttonAddToRoutine.setOnClickListener {
-
-            binding.background.setBackgroundColor(ContextCompat.getColor(context, R.color.green))
-
-
-
             if (!exercisesForRoutine.contains(exercise)) {
+
                 exercisesForRoutine = exercisesForRoutine.toMutableList().apply {
                     add(exercise)
-                    Log.d("ExerciseRoutineAdapter", "Exercise added to routine: ${exercise.name}")
+
                 }
                 notifyDataSetChanged()
             }
-            Log.d("ExerciseRoutineAdapter", "Lista: $exercisesForRoutine")
         }
 
         binding.buttonRemoveFromRoutine.setOnClickListener {
-            Log.d("ExerciseRoutineAdapter", "Exercise removed from routine: ${exercise.name}")
-            binding.background.setBackgroundColor(ContextCompat.getColor(context, R.color.backgroundDefault))
+
 
             val selectedExercise = exercises[position]
             if (exercisesForRoutine.contains(selectedExercise)) {
+
+
                 exercisesForRoutine = exercisesForRoutine.toMutableList().apply {
                     remove(selectedExercise)
+
                 }
                 notifyDataSetChanged()
             }
+
         }
 
 

@@ -1,6 +1,7 @@
 package com.example.proyectapp
 
 import android.content.Intent
+import android.graphics.Paint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -24,6 +25,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar2)
 
+        binding.textNext.paintFlags = binding.textNext.paintFlags or Paint.UNDERLINE_TEXT_FLAG
         binding.buttonAdd.setOnClickListener {
             val routineIntent = Intent(this, RoutineActivity::class.java)
             startActivity(routineIntent)
@@ -38,9 +40,6 @@ class MainActivity : AppCompatActivity() {
 
 
     }
-
-
-
 
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

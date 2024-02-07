@@ -32,17 +32,13 @@ class ExercisesSelectedRoutineActivity : AppCompatActivity() {
             )
             .allowMainThreadQueries().build()
 
-        //Método para meter datos
-
-        //createInitialData()
-
 
         binding.rvSelectedExercises.layoutManager =
             GridLayoutManager(this, 1, RecyclerView.VERTICAL, false)
 
         val routineId = intent.getIntExtra("routineId", -1)
         val exercisesForRoutine = db.exerciseDao().getExercisesForRoutine(routineId)
-        binding.rvSelectedExercises.adapter = ExerciseAdapter(
+        binding.rvSelectedExercises.adapter = ExercisesOnRoutineAdapter(
             exercisesForRoutine, this, db
         )
 
