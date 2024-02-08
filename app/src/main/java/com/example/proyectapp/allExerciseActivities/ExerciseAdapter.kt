@@ -3,6 +3,7 @@ package com.example.proyectapp.allExerciseActivities
 import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -69,8 +70,9 @@ class ExerciseAdapter (
         }
 
         binding.buttonEdit.setOnClickListener{
-
-
+            val editExerciseIntent = Intent(context, EditExerciseActivity::class.java)
+            editExerciseIntent.putExtra("exercise_id", exercise.id) // Pasar el ID del ejercicio
+            context.startActivity(editExerciseIntent)
         }
     }
 

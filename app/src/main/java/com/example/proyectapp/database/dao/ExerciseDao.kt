@@ -11,6 +11,9 @@ interface ExerciseDao {
     @Query("SELECT * FROM exercise")
     fun list(): List<Exercise>
 
+    @Query("SELECT * FROM exercise WHERE id =:id")
+    fun getExerciseById(id: Int): Exercise?
+
     @Query("SELECT * FROM exercise WHERE id IN (SELECT exerciseId FROM routine_exercise_cross_ref WHERE routineId=:routineId)")
     fun getExercisesForRoutine(routineId: Int): List<Exercise>
 
