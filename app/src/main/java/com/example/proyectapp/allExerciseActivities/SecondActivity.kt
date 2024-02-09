@@ -44,7 +44,6 @@ class SecondActivity : AppCompatActivity() {
 
         //Método para meter datos
 
-        //
         //createInitialData()
 
 
@@ -94,13 +93,13 @@ class SecondActivity : AppCompatActivity() {
 
     private fun filterExercises(query: String?) {
         val lowerCaseQuery = query?.lowercase(Locale.getDefault()) ?: ""
-        Log.d("ExerciseFilter", "exerciseList size: ${exerciseList.size}")
+        //Log.d("ExerciseFilter", "exerciseList size: ${exerciseList.size}")
         val filteredList = exerciseList.filter { exercise ->
-            Log.d("ExerciseFilter", "Exercise3")
+            //Log.d("ExerciseFilter", "Exercise3")
             val exerciseName = exercise.name.lowercase(Locale.getDefault())
             val exerciseMuscle = exercise.muscle.lowercase(Locale.getDefault())
             val containsQuery = exerciseName.contains(lowerCaseQuery) || exerciseMuscle.contains(lowerCaseQuery)
-            Log.d("ExerciseFilter", "Exercise: $exerciseName, Muscle: $exerciseMuscle, ContainsQuery: $containsQuery")
+            //Log.d("ExerciseFilter", "Exercise: $exerciseName, Muscle: $exerciseMuscle, ContainsQuery: $containsQuery")
             containsQuery
         }
         exerciseAdapter.updateList(filteredList)

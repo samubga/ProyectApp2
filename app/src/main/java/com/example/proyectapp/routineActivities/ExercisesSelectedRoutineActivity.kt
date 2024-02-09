@@ -36,7 +36,7 @@ class ExercisesSelectedRoutineActivity : AppCompatActivity() {
         binding.rvSelectedExercises.layoutManager =
             GridLayoutManager(this, 1, RecyclerView.VERTICAL, false)
 
-        val routineId = intent.getIntExtra("routineId", -1)
+        val routineId = intent.getIntExtra("routine_id", -1)
         val exercisesForRoutine = db.exerciseDao().getExercisesForRoutine(routineId)
         binding.rvSelectedExercises.adapter = ExercisesOnRoutineAdapter(
             exercisesForRoutine, this, db
@@ -55,7 +55,7 @@ class ExercisesSelectedRoutineActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.back_menu, menu)
 
-        val routineId = intent.getIntExtra("routineId", -1)
+        val routineId = intent.getIntExtra("routine_id", -1)
         val nameRoutine = db.routineDao().getRoutineNameById(routineId)
         binding.toolbar3.setTitle("$nameRoutine")
         binding.toolbar3.setTitleTextColor(ContextCompat.getColor(this, R.color.white))

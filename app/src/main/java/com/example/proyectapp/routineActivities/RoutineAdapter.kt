@@ -64,9 +64,15 @@ class RoutineAdapter (
             }
         }
 
+        binding.buttonEditRoutine.setOnClickListener {
+            val editIntent = Intent(context, EditRoutineActivity::class.java)
+            editIntent.putExtra("routine_id", routine.id)
+            context.startActivity(editIntent)
+        }
+
         binding.buttonViewExercises.setOnClickListener {
             val esIntent = Intent(context, ExercisesSelectedRoutineActivity::class.java)
-            esIntent.putExtra("routineId", routine.id)
+            esIntent.putExtra("routine_id", routine.id)
             context.startActivity(esIntent)
         }
 

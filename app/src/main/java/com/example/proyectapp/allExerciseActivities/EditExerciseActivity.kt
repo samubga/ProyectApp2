@@ -24,7 +24,7 @@ class EditExerciseActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbarBack)
 
         val exerciseId = intent.getIntExtra("exercise_id", -1)
-        Log.d("ID", "Es $exerciseId")
+        //Log.d("ID", "Es $exerciseId")
 
         db = Room
             .databaseBuilder(

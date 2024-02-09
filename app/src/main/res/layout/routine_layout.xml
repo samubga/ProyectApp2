@@ -51,10 +51,21 @@
         tools:ignore="ImageContrastCheck" />
 
     <View
+        android:id="@+id/view"
         android:layout_width="wrap_content"
         android:layout_height="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonViewExercises" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="Ver ejercicios"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonViewExercises"
+        app:layout_constraintStart_toEndOf="@+id/buttonViewExercises"
+        app:layout_constraintTop_toTopOf="@+id/buttonViewExercises" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
