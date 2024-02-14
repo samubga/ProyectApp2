@@ -4,9 +4,9 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName="routine")
-data class Routine(
+@Entity
+data class User(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
-    @ColumnInfo("routine_name") val routineName: String,
-    //@ColumnInfo("user_id") val userId: Int
+    @ColumnInfo("user_name") val userName: String,
+    @ColumnInfo("password")val password: String
 )

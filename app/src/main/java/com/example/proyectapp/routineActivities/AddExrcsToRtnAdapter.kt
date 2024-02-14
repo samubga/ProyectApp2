@@ -1,24 +1,23 @@
 package com.example.proyectapp.routineActivities
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectapp.R
-import com.example.proyectapp.databinding.ExerciseRoutineLayoutBinding
+import com.example.proyectapp.databinding.AddExcrsToRtnLayoutBinding
 import com.example.proyectapp.model.Exercise
 
-class ExerciseRoutineAdapter(
+class AddExrcsToRtnAdapter(
 
     var exercises: List<Exercise>,
     val context: Context
 
 ) :
 
-    RecyclerView.Adapter<ExerciseRoutineAdapter.ItemViewHolder>() {
+    RecyclerView.Adapter<AddExrcsToRtnAdapter.ItemViewHolder>() {
 
     private val layoutInflater = LayoutInflater.from(context)
     var exercisesForRoutine: List<Exercise> = emptyList()
@@ -27,7 +26,7 @@ class ExerciseRoutineAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         return ItemViewHolder(
-            layoutInflater.inflate(R.layout.exercise_routine_layout, null)
+            layoutInflater.inflate(R.layout.add_excrs_to_rtn_layout, null)
         )
     }
 
@@ -37,7 +36,7 @@ class ExerciseRoutineAdapter(
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val exercise = exercises[position]
-        val binding = ExerciseRoutineLayoutBinding.bind(holder.itemView)
+        val binding = AddExcrsToRtnLayoutBinding.bind(holder.itemView)
 
         binding.textViewName.text = exercise.name
 

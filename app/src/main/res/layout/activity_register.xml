@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/gymbg"
     tools:context=".login.LoginActivity">
-    
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -38,7 +38,7 @@
             android:textColor="@color/white"/>
 
     </LinearLayout>
-    
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -56,7 +56,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/bienvenido"
+                android:text="Registrate"
                 android:textColor="@color/morado1"
                 android:textSize="32sp"
                 android:textStyle="bold"/>
@@ -65,7 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:alpha="0.7"
-                android:text="@string/inicia_sesi_n_con_tus_creedenciales"
+                android:text="Unete a nuestra comunidad"
                 tools:ignore="TextContrastCheck" />
 
             <View
@@ -80,7 +80,7 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/editTextUsername"
+                android:id="@+id/editTextRegUsername"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints=""
@@ -95,7 +95,7 @@
                 android:textStyle="bold"/>
 
             <EditText
-                android:id="@+id/editTextPassword"
+                android:id="@+id/editTextRegPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints=""
@@ -103,37 +103,36 @@
                 android:inputType="textPassword"
                 tools:ignore="LabelFor,SpeakableTextPresentCheck" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Confirmar contraseña"
+                android:alpha="0.7"
+                android:textStyle="bold"/>
 
+            <EditText
 
+                android:id="@+id/editTextConfirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:drawableEnd="@drawable/password_icon"
+                android:inputType="textPassword"
+                tools:ignore="LabelFor,SpeakableTextPresentCheck" />
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"/>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/buttonLogin"
+                android:id="@+id/buttonRegister"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:text="@string/iniciar_sesi_n"
+                android:text="Registar usuario"
                 app:backgroundTint="#3F2288"
                 app:cornerRadius="32dp" />
             <View
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"/>
-
-            <TextView
-                android:id="@+id/textCreateAnAccount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:alpha="0.7"
-                android:text="Crear una cuenta nueva"
-                android:textColor="#200D43"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"/>
+                android:layout_height="20dp"/>
 
 
 
@@ -141,5 +140,5 @@
 
     </androidx.cardview.widget.CardView>
 
-    
+
 </RelativeLayout>

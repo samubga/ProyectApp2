@@ -17,5 +17,10 @@ class LoginActivity : AppCompatActivity() {
             val mainIntent = Intent(this, MainActivity::class.java)
             startActivity(mainIntent)
         }
+
+        binding.textCreateAnAccount.setOnClickListener {
+            val registerIntent = Intent(this, RegisterActivity::class.java)
+            startActivity(registerIntent)
+        }
     }
 }

@@ -9,7 +9,6 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
@@ -50,7 +49,7 @@ class CreateRoutineActivity : AppCompatActivity() {
                 Log.d("TAG", "RutinaID: $routineId");
 
                 // 3. Recuperar la lista de ejercicios seleccionados (exercisesForRoutine)
-                val adapter = binding.exerciseRecyclerView.adapter as ExerciseRoutineAdapter
+                val adapter = binding.exerciseRecyclerView.adapter as AddExrcsToRtnAdapter
                 val selectedExercises = adapter.exercisesForRoutine
 
                 // 4. Para cada ejercicio en la lista, crear e insertar una instancia de RoutineExerciseCrossRef
@@ -81,7 +80,7 @@ class CreateRoutineActivity : AppCompatActivity() {
         binding.exerciseRecyclerView.layoutManager =
             GridLayoutManager(this, 1, RecyclerView.VERTICAL, false)
 
-        binding.exerciseRecyclerView.adapter = ExerciseRoutineAdapter(
+        binding.exerciseRecyclerView.adapter = AddExrcsToRtnAdapter(
             db.exerciseDao().list(),this
         )
 
@@ -97,7 +96,7 @@ class CreateRoutineActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        val adapter = binding.exerciseRecyclerView.adapter as ExerciseRoutineAdapter
+        val adapter = binding.exerciseRecyclerView.adapter as AddExrcsToRtnAdapter
 
         adapter.exercises = db.exerciseDao().list()
 
