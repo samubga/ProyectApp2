@@ -20,6 +20,7 @@ import com.example.proyectapp.database.AppDatabase
 import com.example.proyectapp.databinding.ActivityCreateRoutineBinding
 import com.example.proyectapp.model.Routine
 import com.example.proyectapp.model.RoutineExerciseCrossRef
+import com.example.proyectapp.model.User
 
 class CreateRoutineActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCreateRoutineBinding
@@ -40,9 +41,8 @@ class CreateRoutineActivity : AppCompatActivity() {
 
             builder.setPositiveButton("Guardar") { _, _ ->
                 val routineName = input.text.toString()
-
                 // 1. Crear una nueva instancia de la entidad Routine con el nombre obtenido
-                val newRoutine = Routine(routineName = routineName)
+                val newRoutine = Routine(routineName = routineName, userId= User.currentUserID)
 
                 // 2. Guardar la nueva rutina en la base de datos
                 val routineId = db.routineDao().save(newRoutine)

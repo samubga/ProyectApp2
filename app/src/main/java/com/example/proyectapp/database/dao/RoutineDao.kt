@@ -21,4 +21,7 @@ interface RoutineDao {
 
     @Query("SELECT routine_name FROM routine WHERE id=:id")
     fun getRoutineNameById(id: Int): String?
+
+    @Query("SELECT * FROM routine WHERE user_id = :userId")
+    fun getRoutinesByUserId(userId: Int): List<Routine>
 }

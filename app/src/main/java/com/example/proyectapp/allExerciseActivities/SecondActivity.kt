@@ -17,7 +17,9 @@ import com.example.proyectapp.MainActivity
 import com.example.proyectapp.R
 import com.example.proyectapp.database.AppDatabase
 import com.example.proyectapp.databinding.ActivitySecondBinding
+import com.example.proyectapp.login.LoginActivity
 import com.example.proyectapp.model.Exercise
+import com.example.proyectapp.model.User
 import com.example.proyectapp.routineActivities.RoutineActivity
 import java.util.Locale
 
@@ -44,7 +46,7 @@ class SecondActivity : AppCompatActivity() {
 
         //Método para meter datos
 
-        //createInitialData()
+        createInitialData()
 
 
 
@@ -140,6 +142,12 @@ class SecondActivity : AppCompatActivity() {
             R.id.menuRoutines->{
                 val routineActivityIntent = Intent(this, RoutineActivity::class.java)
                 startActivity(routineActivityIntent)
+                true
+            }
+            R.id.menuLogOut->{
+                User.currentUserID = -1
+                val loginActivityIntent = Intent(this, LoginActivity::class.java)
+                startActivity(loginActivityIntent)
                 true
             }
             else -> {

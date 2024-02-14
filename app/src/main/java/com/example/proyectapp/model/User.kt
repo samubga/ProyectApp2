@@ -8,5 +8,12 @@ import androidx.room.PrimaryKey
 data class User(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     @ColumnInfo("user_name") val userName: String,
-    @ColumnInfo("password")val password: String
-)
+    @ColumnInfo("password")val password: String,
+    @ColumnInfo(name = "salt") val salt: ByteArray
+){
+    companion object {
+        var currentUserID: Int = -1
+    }
+
+
+}

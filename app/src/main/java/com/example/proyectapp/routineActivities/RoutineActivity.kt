@@ -16,6 +16,8 @@ import com.example.proyectapp.R
 import com.example.proyectapp.allExerciseActivities.AddExerciseActivity
 import com.example.proyectapp.database.AppDatabase
 import com.example.proyectapp.databinding.ActivityRoutineBinding
+import com.example.proyectapp.login.LoginActivity
+import com.example.proyectapp.model.User
 
 class RoutineActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRoutineBinding
@@ -63,7 +65,7 @@ class RoutineActivity : AppCompatActivity() {
 
         val adapter = binding.recyclerViewRoutines.adapter as RoutineAdapter
 
-        adapter.routines = db.routineDao().list()
+        adapter.routines = db.routineDao().getRoutinesByUserId(User.currentUserID)
 
         adapter.notifyDataSetChanged()
     }
@@ -91,6 +93,12 @@ class RoutineActivity : AppCompatActivity() {
             R.id.menuRoutines->{
                 val routineActivityIntent = Intent(this, RoutineActivity::class.java)
                 startActivity(routineActivityIntent)
+                true
+            }
+            R.id.menuLogOut->{
+                User.currentUserID = -1
+                val loginActivityIntent = Intent(this, LoginActivity::class.java)
+                startActivity(loginActivityIntent)
                 true
             }
             else -> {

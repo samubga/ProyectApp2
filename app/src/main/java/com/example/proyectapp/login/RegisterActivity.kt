@@ -5,31 +5,38 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import com.example.proyectapp.R
+import android.widget.Toast
+import androidx.room.Room
+import com.example.proyectapp.database.AppDatabase
 import com.example.proyectapp.databinding.ActivityRegisterBinding
+import com.example.proyectapp.model.User
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
+    private lateinit var db: AppDatabase
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        db = Room.databaseBuilder(
+            this,
+            AppDatabase::class.java,
+            AppDatabase.DATABASE_NAME
+        ).allowMainThreadQueries().build()
 
         binding.buttonRegister.isEnabled = false
-        binding.buttonRegister.setOnClickListener{
-            val loginIntent = Intent(this, LoginActivity::class.java)
-            startActivity(loginIntent)
-        }
+
 
 
         binding.editTextConfirmPassword.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                // No necesitas implementar nada aquí
+
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                // No necesitas implementar nada aquí
+
             }
 
             override fun afterTextChanged(s: Editable?) {
@@ -46,5 +53,32 @@ class RegisterActivity : AppCompatActivity() {
             }
         })
 
+        binding.buttonRegister.setOnClickListener{
+            val userName = binding.editTextRegUsername.text.toString()
+            val password = binding.editTextRegPassword.text.toString()
+
+
+
+            if (db.userDao().getUserByUsername(userName) != null) {
+                Toast.makeText(this, "El nombre de usuario ya está en uso", Toast.LENGTH_SHORT).show()
+            } else {
+
+                val salt = PasswordUtils.generateRandomSalt();
+
+                // Generar el hash de la contraseña
+                val hashedPassword = PasswordUtils.generateHash(password, salt)
+
+                val user = User(userName = userName, password = hashedPassword, salt = salt)
+                db.userDao().save(user)
+
+                Toast.makeText(this, "Usuario registrado correctamente", Toast.LENGTH_SHORT).show()
+                val loginIntent = Intent(this, LoginActivity::class.java)
+                startActivity(loginIntent)
+            }
+        }
+
+
     }
+
+
 }

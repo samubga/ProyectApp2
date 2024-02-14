@@ -11,7 +11,9 @@ import com.example.proyectapp.allExerciseActivities.AddExerciseActivity
 import com.example.proyectapp.allExerciseActivities.SecondActivity
 import com.example.proyectapp.database.AppDatabase
 import com.example.proyectapp.databinding.ActivityMainBinding
+import com.example.proyectapp.login.LoginActivity
 import com.example.proyectapp.model.Exercise
+import com.example.proyectapp.model.User
 import com.example.proyectapp.routineActivities.RoutineActivity
 
 class MainActivity : AppCompatActivity() {
@@ -65,6 +67,12 @@ class MainActivity : AppCompatActivity() {
             R.id.menuRoutines->{
                 val routineActivityIntent = Intent(this, RoutineActivity::class.java)
                 startActivity(routineActivityIntent)
+                true
+            }
+            R.id.menuLogOut->{
+                User.currentUserID = -1
+                val loginActivityIntent = Intent(this, LoginActivity::class.java)
+                startActivity(loginActivityIntent)
                 true
             }
             else -> {

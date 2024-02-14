@@ -8,5 +8,5 @@ import androidx.room.PrimaryKey
 data class Routine(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     @ColumnInfo("routine_name") val routineName: String,
-    //@ColumnInfo("user_id") val userId: Int
+    @ColumnInfo("user_id") val userId: Int
 )
