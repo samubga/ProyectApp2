@@ -27,17 +27,18 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar2)
 
-        binding.textNext.paintFlags = binding.textNext.paintFlags or Paint.UNDERLINE_TEXT_FLAG
-        binding.buttonAdd.setOnClickListener {
-            val routineIntent = Intent(this, RoutineActivity::class.java)
-            startActivity(routineIntent)
+        //Subrayar texto
+        //binding.textNext.paintFlags = binding.textNext.paintFlags or Paint.UNDERLINE_TEXT_FLAG
 
 
-        }
-
-        binding.textNext.setOnClickListener {
+        binding.cardViewExercises.setOnClickListener {
             val exerciseIntent = Intent(this, SecondActivity::class.java)
             startActivity(exerciseIntent)
+        }
+
+        binding.cardViewRoutines.setOnClickListener {
+            val routineIntent = Intent(this, RoutineActivity::class.java)
+            startActivity(routineIntent)
         }
 
 
