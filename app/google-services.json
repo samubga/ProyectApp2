@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "197911987186",
+    "project_id": "samuel-pruebas",
+    "storage_bucket": "samuel-pruebas.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:197911987186:android:facffadb063cbc47b8616b",
+        "android_client_info": {
+          "package_name": "com.example.proyectapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXWMwDd1MBAXl0RIKt5f6WpnRjgn3Rmp4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

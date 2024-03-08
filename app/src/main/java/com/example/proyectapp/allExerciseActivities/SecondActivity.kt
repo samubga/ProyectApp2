@@ -46,7 +46,7 @@ class SecondActivity : AppCompatActivity() {
 
         //Método para meter datos
 
-        createInitialData()
+        //createInitialData()
 
 
 
@@ -159,6 +159,9 @@ class SecondActivity : AppCompatActivity() {
     }
 
     fun createInitialData() {
+
+
+
         db.exerciseDao().save(
             Exercise("Curl martillo",4 ,10, "Biceps", " Un ejercicio efectivo para aislar y trabajar los músculos del bíceps. El agarre neutral en forma de martillo proporciona un estímulo adicional.")
         )

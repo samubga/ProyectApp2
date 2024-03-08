@@ -11,7 +11,7 @@ import com.example.proyectapp.databinding.AddExcrsToRtnLayoutBinding
 import com.example.proyectapp.model.Exercise
 
 class EditRoutineAdapter (
-    var exercises: List<Exercise>,
+    var exercises: Map<Int, Exercise>,
     var allExercises: List<Exercise>,
     val context: Context
 
@@ -19,7 +19,7 @@ class EditRoutineAdapter (
     RecyclerView.Adapter<EditRoutineAdapter.ItemViewHolder>() {
 
     private val layoutInflater = LayoutInflater.from(context)
-    var exercisesForRoutine: List<Exercise> = exercises
+    var exercisesForRoutine: List<Exercise> = exercises.values.toList()
 
     class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
@@ -75,7 +75,7 @@ class EditRoutineAdapter (
         binding.buttonRemoveFromRoutine.setOnClickListener {
 
 
-            val selectedExercise = exercises[position]
+            val selectedExercise = exercises[exercise.id]
             if (exercisesForRoutine.contains(selectedExercise)) {
 
 

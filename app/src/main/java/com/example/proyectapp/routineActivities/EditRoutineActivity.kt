@@ -33,7 +33,10 @@ class EditRoutineActivity : AppCompatActivity() {
             .allowMainThreadQueries().build()
 
         val routineId = intent.getIntExtra("routine_id", -1)
-        val exercisesForRoutine = db.exerciseDao().getExercisesForRoutine(routineId)
+        val exercisesForRoutine = db.exerciseDao()
+            .getExercisesForRoutine(routineId)
+            .map { e -> Pair(e.id, e) }
+            .toMap()
         val nameRoutine = db.routineDao().getRoutineNameById(routineId)
 
         binding.editTextRoutineName.setText(nameRoutine)
